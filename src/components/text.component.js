@@ -6,6 +6,7 @@ export default class GetText extends Component {
         super();
         this.state = {
             text: "",
+            type: "paragraph",
         };
     }
 
@@ -22,6 +23,26 @@ export default class GetText extends Component {
                 this.setState({ text: text });
                 console.log("state", this, state.text);
             })
+    }
+
+    render() {
+        return (
+            <div>
+                <p>{this.state.counter}</p>
+                <button
+                    onClick={this.onIncrement}
+                    type="button"
+                >
+                    Increment
+        </button>
+                <button
+                    onClick={this.onDecrement}
+                    type="button"
+                >
+                    Decrement
+        </button>
+            </div>
+        );
     }
 
 }

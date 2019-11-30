@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class GetImgText extends Component {
+export default class Header extends Component {
     constructor() {
         super();
         this.state = {
