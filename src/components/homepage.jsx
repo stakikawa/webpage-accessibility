@@ -18,7 +18,7 @@ class Homepage extends React.Component {
     this.handleText = this.handleText.bind(this)
 
     this.state = {
-      link: "test",
+      link: "",
       alt: false,
       font: false,
       color: false,
@@ -26,7 +26,7 @@ class Homepage extends React.Component {
   }
 
   handleSubmit = event => {
-    alert('The link you submitted: ' + this.state.link);
+    alert('The link you submitted: ' + this.state.link + '. You also submitted the following: ' + this.state.alt + ' ' + this.state.font + ' ' + this.state.color + ' ');
     event.preventDefault();
   }
 
