@@ -3,12 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import Homepage from './components/homepage.jsx'
 import Header from './components/header.jsx'
+import Text from './components/text.jsx'
 
 function App() {
   return (
     <div className="App">
       <Homepage />
-      <Header text="This is a header!" />
+          <Header text="This is a header!" />
     </div>
   );
 }
