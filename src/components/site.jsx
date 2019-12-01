@@ -1,12 +1,18 @@
 import React from 'react';
-import { makeStyles, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import Header from './header.jsx';
 import AltPicture from './altpicture.jsx';
 import Text from './text.jsx';
 
 const useStyles = makeStyles({
     root: {
-        fontSize: '36px',
+        width: '100%',
+        maxWidth: 500,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: "0 auto",
+        padding: 10,
     },
 });
 
@@ -18,20 +24,20 @@ TYPE CONSTRAINT: inputData is a list of objects such that each one if either a (
 
 const Site = ({ inputData }) => {
 
-    // const classes = useStyles();
+    const classes = useStyles();
 
     return (
         <div className="newWebpage">
             { inputData.map(comp =>
                 { switch(comp.type) {
                     case "head":
-                        return <Header text={ comp.text } />
+                        return <div className={classes.root}><Header text={ comp.text } /><br></br></div>
                     case "para":
-                        return <Text text={ comp.text } />
+                        return <div className={classes.root}><Text text={ comp.text } /><br></br></div>
                     case "img":
-                        return <AltPicture source={ comp.source } newAlt={ comp.alt } />
+                        return <div className={classes.root}><AltPicture source={ comp.source } newAlt={ comp.alt } /><br></br></div>
                     default:
-                        return <Typography>Bad input!</Typography>
+                        return ""
                   } 
                 })
             }
