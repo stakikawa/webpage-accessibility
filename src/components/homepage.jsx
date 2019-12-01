@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, TextField, Typography, Grid, FormLabel, FormControl, FormGroup, FormControlLabel, FormHelperText, Checkbox } from '@material-ui/core';
 import Site from './site.jsx';
+import {scrapeurl} from "./web-scraper";
 
 import dummy from './dummy.jsx';
 
@@ -31,7 +32,7 @@ class Homepage extends React.Component {
   }
 
   handleSubmit = event => {
-    alert('The link you submitted: ' + this.state.link + '. You also submitted the following: ' + this.state.alt + ' ' + this.state.font + ' ' + this.state.color + ' ');
+    //alert('The link you submitted: ' + this.state.link + '. You also submitted the following: ' + this.state.alt + ' ' + this.state.font + ' ' + this.state.color + ' ');
     
     // Go to web scraper, get data
 
@@ -39,7 +40,7 @@ class Homepage extends React.Component {
 
     // Render data
 
-    this.setState({ ...this.state, data: dummy});
+    scrapeurl("http://medium.com/personal-growth/the-most-important-skill-nobody-taught-you-9b162377ab77").then(res => this.setState({ ...this.state, data: res}));
     
 
     event.preventDefault();

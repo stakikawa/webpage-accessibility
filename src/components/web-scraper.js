@@ -2,10 +2,17 @@
 
 const Axios = require('axios');
 
+
 // String -> AxiosResponse<T>
 // grabs the webpage
 function scrape(url) {
-    return Axios.get(url);
+    var config = {
+        crossdomain: true,
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+    }
+    };
+    return Axios.get("http://www.whateverorigin.org/get?url=" + encodeURIComponent(url) + "&callback=?",config);
 }
 
 // FormatterInput is Array of Elements
@@ -16,6 +23,7 @@ function scrape(url) {
 // AxiosResponse<T> -> FormatterInput<T>
 // parse: formats the data
 function parse(doc){
+    debugger;
     //select the data field from response
     let data = doc.data;
     //extract article
@@ -60,6 +68,7 @@ function parse(doc){
                 element.source = srci.substring(0,srci.indexOf("\""));
                 //TODO: call to image handler
                 //TODO: make hacky fix for small dupe images with src: ......?q=20
+
                 formatterinput.push(element);
             }
         }
@@ -78,7 +87,10 @@ function tagcheck(tag){
 function isheader(tag){
     return tag == "h1" | tag == "h2" | tag == "h3" | tag == "h4" | tag == "h5" | tag == "h6";
 }
-scrape("https://towardsdatascience.com/4-common-types-of-hackathons-7daba7296ae1").then(parse).then(
-    //TODO CALL RENDERER RIGHT HERE
-    console.log
-);
+
+export async function scrapeurl(url) {
+    let res = await scrape(url);
+    return parse(res);
+}
+
+scrapeurl("https://towardsdatascience.com/4-common-types-of-hackathons-7daba7296ae1").then(res => console.log(res));
