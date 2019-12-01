@@ -1,6 +1,9 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, TextField, Typography, Grid, FormLabel, FormControl, FormGroup, FormControlLabel, FormHelperText, Checkbox } from '@material-ui/core';
+import Site from './site.jsx';
+
+import dummy from './dummy.jsx';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,15 +21,27 @@ class Homepage extends React.Component {
     this.handleText = this.handleText.bind(this)
 
     this.state = {
+      renderForm: true,
       link: "",
       alt: false,
       font: false,
       color: false,
+      data: [],
     }
   }
 
   handleSubmit = event => {
     alert('The link you submitted: ' + this.state.link + '. You also submitted the following: ' + this.state.alt + ' ' + this.state.font + ' ' + this.state.color + ' ');
+    
+    // Go to web scraper, get data
+
+    // Give data to CV, get new data
+
+    // Render data
+
+    this.setState({ ...this.state, data: dummy});
+    
+
     event.preventDefault();
   }
 
@@ -44,7 +59,8 @@ class Homepage extends React.Component {
 
     return <div className='main'>
       <form onSubmit={this.handleSubmit}>
-        <Typography variant="h3">Webpage Accessibility App</Typography>
+        <br>
+        </br><Typography variant="h3">Webpage Accessibility App</Typography>
         <TextField id="url" label="Paste URL" onChange={this.handleText('link')} value={values.link}></TextField>
 
         <Grid
@@ -68,7 +84,10 @@ class Homepage extends React.Component {
         </Grid>
 
         <Button type="submit" variant="contained" color="primary">Go!</Button> 
-        </form>
+        </form> 
+      
+      <Site inputData={this.state.data}></Site>
+
       </div>
   }
 }
