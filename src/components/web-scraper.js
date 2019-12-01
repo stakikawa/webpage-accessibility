@@ -58,7 +58,7 @@ function parse(doc){
                 element.text = x.substring(begin+1, end);
                 formatterinput.push(element);
             }
-        } else if(gettag(x) == "img" && x.indexOf("?") == -1){
+        } else if(gettag(x) == "img"){
             let srci = x.indexOf("src=\"");
 
             if (srci != -1){
@@ -66,10 +66,7 @@ function parse(doc){
                 let element = new Object();
                 element.type = "img";
                 element.source = srci.substring(0,srci.indexOf("\""));
-                function setalt(element, src){
-                    element.alt = src;
-                }
-                altt.getDescription(element.source).then(res => setalt(element, res));
+                altt.getDescription(element.source).then(res => element.source = res);
                 formatterinput.push(element);
             }
         }
@@ -91,7 +88,5 @@ function isheader(tag){
 
 export async function scrapeurl(url) {
     let res = await scrape(url);
-    let ob = parse(res);
-    console.log(ob);
-    return ob;
+    return parse(res);
 }
