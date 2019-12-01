@@ -1,10 +1,5 @@
 import React from 'react';
-import { Typography, makeStyles } from '@material-ui/core';
-
-const useStyles = makeStyles({
-    root: {
-    },
-});
+import { Typography } from '@material-ui/core';
 
 const Text = ({ text }) => {
 

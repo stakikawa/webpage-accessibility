@@ -1,11 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
-
-const useStyles = makeStyles({
-    root: {
-        fontSize: '36px',
-    },
-});
 
 const AltPicture = ({ source, newAlt }) => {
 
