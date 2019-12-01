@@ -30,7 +30,7 @@ const Site = ({ inputData }) => {
         <div className="newWebpage">
             { inputData.map(comp =>
                 { switch(comp.type) {
-                    case "head":
+                    case "h1":
                         return <div className={classes.root}><Header text={ comp.text } /><br></br></div>
                     case "para":
                         return <div className={classes.root}><Text text={ comp.text } /><br></br></div>

@@ -40,9 +40,7 @@ class Homepage extends React.Component {
 
     // Render data
     scrapeurl(this.state.link).then(res => this.setState({ ...this.state, data: res}));
-
-
-
+    console.log(this.state);
     event.preventDefault();
   };
 
