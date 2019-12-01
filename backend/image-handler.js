@@ -1,1 +1,0 @@
-// Module for handling images, resizing and interacting with azure.
