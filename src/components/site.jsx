@@ -1,18 +1,12 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Typography } from '@material-ui/core';
 import Header from './header.jsx';
 import AltPicture from './altpicture.jsx';
 import Text from './text.jsx';
 
 const useStyles = makeStyles({
     root: {
-        width: '100%',
-        maxWidth: 500,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: "0 auto",
-        padding: 10,
+        fontSize: '36px',
     },
 });
 
@@ -24,20 +18,25 @@ TYPE CONSTRAINT: inputData is a list of objects such that each one if either a (
 
 const Site = ({ inputData }) => {
 
-    const classes = useStyles();
+    // const classes = useStyles();
 
     return (
         <div className="newWebpage">
             { inputData.map(comp =>
                 { switch(comp.type) {
+<<<<<<< HEAD
                     case "h1":
                         return <div className={classes.root}><Header text={ comp.text } /><br></br></div>
+=======
+                    case "head":
+                        return <Header text={ comp.text } />
+>>>>>>> parent of 8a26194... Merge pull request #6 from stakikawa/wpa-5-better-site
                     case "para":
-                        return <div className={classes.root}><Text text={ comp.text } /><br></br></div>
+                        return <Text text={ comp.text } />
                     case "img":
-                        return <div className={classes.root}><AltPicture source={ comp.source } newAlt={ comp.alt } /><br></br></div>
+                        return <AltPicture source={ comp.source } newAlt={ comp.alt } />
                     default:
-                        return ""
+                        return <Typography>Bad input!</Typography>
                   } 
                 })
             }
