@@ -61,7 +61,7 @@ class Homepage extends React.Component {
     return <div className='main'>
       <form onSubmit={this.handleSubmit}>
         <br>
-        </br><Typography variant="h3">Webpage Accessibility App</Typography>
+        </br><Typography variant="h3">Alt Access</Typography>
         <TextField id="url" label="Paste URL" onChange={this.handleText('link')} value={values.link}></TextField>
 
         <Grid

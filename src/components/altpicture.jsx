@@ -13,7 +13,7 @@ const AltPicture = ({ source, newAlt }) => {
 
     return (
         <div class="altImage">
-            <img src={source} alt={newAlt} />
+            <img width="100%" height="auto" src={source} alt={newAlt} />
         </div>
     );
 };

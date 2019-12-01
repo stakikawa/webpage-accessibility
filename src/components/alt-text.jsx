@@ -19,8 +19,8 @@ function computerVision() {
   computerVision();
 
 
-let key = "INSERT KEY";
-let endpoint = "INseRT Endpoint";
+let key = "13bfac34bba44cc8b33f5b8206d51c2a";
+let endpoint = "https://webpage-accessibility-alt-text.cognitiveservices.azure.com/";
 if (!key) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
 
 let computerVisionClient = new ComputerVisionClient(new ApiKeyCredentials({inHeader: {'Ocp-Apim-Subscription-Key': key}}), endpoint);
