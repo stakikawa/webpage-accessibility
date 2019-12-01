@@ -12,7 +12,7 @@ function scrape(url) {
         'Access-Control-Allow-Origin': '*',
     }
     };
-    return Axios.get("http://www.whateverorigin.org/get?url=" + encodeURIComponent(url) + "&callback=?",config);
+    return Axios.get("https://cors-anywhere.herokuapp.com/" + url,config);
 }
 
 // FormatterInput is Array of Elements
@@ -23,7 +23,6 @@ function scrape(url) {
 // AxiosResponse<T> -> FormatterInput<T>
 // parse: formats the data
 function parse(doc){
-    debugger;
     //select the data field from response
     let data = doc.data;
     //extract article
