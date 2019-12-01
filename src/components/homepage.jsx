@@ -10,16 +10,16 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
   }
-}))
+}));
 
 class Homepage extends React.Component {
 
   constructor() {
     super();
 
-    this.handleClick = this.handleClick.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleText = this.handleText.bind(this)
+    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleText = this.handleText.bind(this);
 
     this.state = {
       renderForm: true,
@@ -39,12 +39,12 @@ class Homepage extends React.Component {
     // Give data to CV, get new data
 
     // Render data
+    scrapeurl(this.state.link).then(res => this.setState({ ...this.state, data: res}));
 
-    scrapeurl("http://medium.com/personal-growth/the-most-important-skill-nobody-taught-you-9b162377ab77").then(res => this.setState({ ...this.state, data: res}));
-    
+
 
     event.preventDefault();
-  }
+  };
 
   handleClick = name => event => {
     this.setState({ ...this.state, [name]: event.target.checked});
@@ -56,7 +56,7 @@ class Homepage extends React.Component {
 
   render () {
 
-    const values = this.state
+    const values = this.state;
 
     return <div className='main'>
       <form onSubmit={this.handleSubmit}>

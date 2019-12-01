@@ -1,6 +1,7 @@
 // Module for scraping the content of the website
 
 const Axios = require('axios');
+const altt = require('./alt-text.jsx');
 
 
 // String -> AxiosResponse<T>
@@ -65,9 +66,7 @@ function parse(doc){
                 let element = new Object();
                 element.type = "img";
                 element.source = srci.substring(0,srci.indexOf("\""));
-                //TODO: call to image handler
-                //TODO: make hacky fix for small dupe images with src: ......?q=20
-
+                altt.getDescription(element.source).then(res => element.source = res);
                 formatterinput.push(element);
             }
         }
@@ -91,5 +90,3 @@ export async function scrapeurl(url) {
     let res = await scrape(url);
     return parse(res);
 }
-
-scrapeurl("https://towardsdatascience.com/4-common-types-of-hackathons-7daba7296ae1").then(res => console.log(res));
